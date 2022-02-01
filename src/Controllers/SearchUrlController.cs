@@ -36,9 +36,6 @@ namespace SearchUrlController.Controllers
             {
                 Uri uri = new Uri(list[i]);
 
-                if (uri is null)
-                    return "Null Pointer Exception";
-
                 string host = uri.Host;
 
                 if (host.Contains("www."))
