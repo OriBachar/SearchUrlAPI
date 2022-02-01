@@ -5,11 +5,9 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
-using SearchUrlAPI.SearchUrl;
+using SearchUrlAPI.Models;
 
-namespace SearchUrlController.Controllers
+namespace SearchUrlAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,7 +19,7 @@ namespace SearchUrlController.Controllers
 
             List<string> list = new List<string>();
 
-            List<SearchUrlAPI.SearchUrl.SearchUrl> data = new List<SearchUrlAPI.SearchUrl.SearchUrl>();
+            List<SearchUrl> data = new List<SearchUrl>();
 
             list = GetAllUrls(url);
 
@@ -50,7 +48,7 @@ namespace SearchUrlController.Controllers
 
                 string title = host;
 
-                data.Add(new SearchUrlAPI.SearchUrl.SearchUrl(list[i], title));
+                data.Add(new SearchUrl(list[i], title));
             }
 
             string json = JsonConvert.SerializeObject(data.ToArray(), Formatting.Indented);
