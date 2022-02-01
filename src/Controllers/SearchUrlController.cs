@@ -39,13 +39,13 @@ namespace SearchUrlController.Controllers
                 string host = uri.Host;
 
                 if (host.Contains("www."))
-                    host = host.Replace("www.","");
+                    host = host.Replace("www.", string.Empty);
 
                 if (host.Contains(".co.il"))
-                    host = host.Replace(".co.il", "");
+                    host = host.Replace(".co.il", string.Empty);
 
                 if (host.Contains(".com"))
-                    host = host.Replace(".com", "");
+                    host = host.Replace(".com", string.Empty);
 
 
                 string title = host;
