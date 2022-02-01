@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SearchUrlAPI.SearchUrl
+namespace SearchUrlAPI.Models
 {
     public class SearchUrl
     {
@@ -13,13 +13,10 @@ namespace SearchUrlAPI.SearchUrl
 
         public SearchUrl(string url, string title)
         {
-            this.Url = url;
+            Url = url;
 
-            this.Title = title;
+            Title = title;
         }
 
-        public SearchUrl()
-        {
-        }
     }
 }
