@@ -23,7 +23,7 @@ namespace SearchUrlController.Controllers
 
             List<SearchUrlAPI.SearchUrl.SearchUrl> data = new List<SearchUrlAPI.SearchUrl.SearchUrl>();
 
-            list = GatAllUrls(url);
+            list = GetAllUrls(url);
 
             if (list is null)
                 return "The remote server returned an error";
@@ -36,19 +36,19 @@ namespace SearchUrlController.Controllers
             {
                 Uri uri = new Uri(list[i]);
 
+                if (uri is null)
+                    return "Null Pointer Exception";
+
                 string host = uri.Host;
 
-               if (host.Contains("https://"))
-                    host = host.Remove(host.IndexOf("https://"), "https://".Length);
-
                 if (host.Contains("www."))
-                    host = host.Remove(host.IndexOf("www."), "www.".Length);
+                    host = host.Replace("www.","");
 
                 if (host.Contains(".co.il"))
-                    host = host.Remove(host.IndexOf(".co.il"), ".co.il".Length);
+                    host = host.Replace(".co.il", "");
 
                 if (host.Contains(".com"))
-                    host = host.Remove(host.IndexOf(".com"), ".com".Length);
+                    host = host.Replace(".com", "");
 
 
                 string title = host;
@@ -61,7 +61,7 @@ namespace SearchUrlController.Controllers
             return json;
         }
 
-        private List<string> GatAllUrls(string _url)
+        private List<string> GetAllUrls(string _url)
         {
             var client = new WebClient();
 
@@ -81,11 +81,6 @@ namespace SearchUrlController.Controllers
 
                 return null;
             }
-
-           
-
-            
-
         }
     }
 }
